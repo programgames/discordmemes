@@ -14,7 +14,11 @@ client.on('message', message => {
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 
     const args = message.content.slice(prefix.length).split(' ');
-    const command = args.shift().toLowerCase();
+    var command = "";
+    do {
+        command = args.shift().toLowerCase();
+    } while (command.length == 0);
+
     var joueurs = ['ixion', 'julien', 'tatas'];
     if (command === 'player') {
         if (!args.length) {
