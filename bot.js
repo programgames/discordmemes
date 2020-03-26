@@ -44,7 +44,7 @@ client.on('message', message => {
     }
     else if (command === 'meme') {
 
-        var voiceChannel = message.member.voiceChannel;
+        var voiceChannel = message.member.voice.channel;
         if (!args.length) {
             return message.channel.send(`Aucun meme spécifié, ${message.author}!`);
         }
@@ -98,9 +98,8 @@ client.on('message', message => {
         }
         else if (args[0] === 'issou') {
             voiceChannel.join().then(connection => {
-                const dispatcher = connection.playFile('./memes/issou.mp3');
-                dispatcher.on("end", end => {
-                    voiceChannel.leave()
+                connection.play(fs.createReadStream('./memes/issou.ogg'), {
+                    type: 'ogg/opus',
                 });
             }).catch(err => console.log(err));
         }
