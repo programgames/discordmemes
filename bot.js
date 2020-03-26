@@ -50,90 +50,58 @@ client.on('message', message => {
         }
         else if (args[0] === 'pussy') {
             voiceChannel.join().then(connection => {
-                const dispatcher = connection.playFile('./memes/pussy.mp3');
-                dispatcher.on("end", end => {
-                    voiceChannel.leave()
-                });
+                connection.play('./memes/pussy.mp3');
             }).catch(err => console.log(err));
         }
         else if (args[0] === 'run') {
             voiceChannel.join().then(connection => {
-                const dispatcher = connection.playFile('./memes/run.mp3');
-                dispatcher.on("end", end => {
-                    voiceChannel.leave()
-                });
+                connection.play('./memes/run.mp3');
             }).catch(err => console.log(err));
         }
         else if (args[0] === 'ps1') {
             voiceChannel.join().then(connection => {
-                const dispatcher = connection.playFile('./memes/ps1.mp3');
-                dispatcher.on("end", end => {
-                    voiceChannel.leave()
-                });
+                connection.play('./memes/ps1.mp3');
             }).catch(err => console.log(err));
         }
         else if (args[0] === 'akbar') {
             voiceChannel.join().then(connection => {
-                const dispatcher = connection.playFile('./memes/akbar.mp3');
-                dispatcher.on("end", end => {
-                    voiceChannel.leave()
-                });
+                connection.play('./memes/akbar.mp3');
             }).catch(err => console.log(err));
         }
         else if (args[0] === 'wtf') {
             voiceChannel.join().then(connection => {
-                const dispatcher = connection.playFile('./memes/wtf.mp3');
-                dispatcher.on("end", end => {
-                    voiceChannel.leave()
-                });
+                connection.play('./memes/wtf.mp3');
             }).catch(err => console.log(err));
         }
         else if (args[0] === 'cena') {
             voiceChannel.join().then(connection => {
-                const dispatcher = connection.playFile('./memes/cena.mp3');
-                dispatcher.on("end", end => {
-                    voiceChannel.leave()
-                });
+                connection.play('./memes/cena.mp3');
             }).catch(err => console.log(err));
         }
         else if (args[0] === 'issou') {
             voiceChannel.join().then(connection => {
-                connection.play(fs.createReadStream('./memes/issou.ogg'), {
-                    type: 'ogg/opus',
-                });
+                connection.play('./memes/issou.ogg');
             }).catch(err => console.log(err));
         }
         else if (args[0] === 'surprise') {
             voiceChannel.join().then(connection => {
-                const dispatcher = connection.playFile('./memes/surpise.mp3');
-                dispatcher.on("end", end => {
-                    voiceChannel.leave()
-                });
+                connection.play('./memes/surpise.mp3');
             }).catch(err => console.log(err));
         }
         else if (args[0] === 'ha') {
             voiceChannel.join().then(connection => {
-                const dispatcher = connection.playFile('./memes/ha.mp3');
-                dispatcher.on("end", end => {
-                    voiceChannel.leave()
-                });
+                connection.play('./memes/ha.mp3');
             }).catch(err => console.log(err));
         }
         else if (args[0] === 'nein') {
             voiceChannel.join().then(connection => {
-                const dispatcher = connection.playFile(fs.createReadStream('./memes/pussy.ogg'), { type: 'ogg/opus', volume: false });
-               // connection.playFile('./memes/nein.mp3');
-                dispatcher.on("end", end => {
-                    voiceChannel.leave()
-                });
+                connection.play('./memes/pussy.mp3');
             }).catch(err => console.log(err));
         }
         else if (args[0] === 'haaa') {
             voiceChannel.join().then(connection => {
-                const dispatcher = connection.playFile('./memes/haaa.mp3');
-                dispatcher.on("end", end => {
-                    voiceChannel.leave()
-                });
+                connection.play('./memes/haaa.mp3');
+                
             }).catch(err => console.log(err));
         }
 
