@@ -49,8 +49,9 @@ client.on('message', message => {
             return message.channel.send(`Aucun meme spécifié, ${message.author}!`);
         }
         voiceChannel.join().then(connection => {
-            if (!fs.existsSync(path)) {
-                return message.channel.send(`Le fichier, ${message.author}.mp3 n'existe pas`);
+            var filePath = './memes/' + args[0] + '.mp3';
+            if (!fs.existsSync(filePath)) {
+                return message.channel.send(`Le fichier, ${filePath} n'existe pas`);
             }
             const dispatcher = connection.play('./memes/' + args[0] + '.mp3');
             dispatcher.on("end", end => {
