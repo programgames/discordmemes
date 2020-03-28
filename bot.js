@@ -59,6 +59,19 @@ client.on('message', message => {
             });
         }).catch(err => console.log(err));
     }
+    else if (command === 'listmeme') {
+        fs.readdir('./memes/', function (err, files) {
+            if (err) {
+                return console.log('Unable to scan directory: ' + err);
+            }
+            var filesNames = '';
+            files.forEach(function (file) {
+                filesNames += file + ' , ';
+            });
+            return message.channel.send(filesNames);
+        });
+    }
+
 });
 
 client.login(config.token);
