@@ -52,14 +52,14 @@ client.on('message', message => {
             if (!fs.existsSync(filePath)) {
                 return message.channel.send(`Le fichier, ${filePath} n'existe pas`);
             }
-            const dispatcher = connection.play('./memes/' + args[0] + '.mp3');
+            const dispatcher = connection.play(filePath);
             dispatcher.on("end", end => {
                 voiceChannel.leave()
             });
         }).catch(err => console.log(err));
     }
     else if (command === 'listmeme') {
-        fs.readdir('./memes/', function (err, files) {
+        fs.readdir('/home/discordmemesSf/public/uploads/mp3/', function (err, files) {
             if (err) {
                 return message.channel.send('Unable to scan directory: ' + err);
             }
