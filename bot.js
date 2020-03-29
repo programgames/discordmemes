@@ -48,7 +48,7 @@ client.on('message', message => {
             return message.channel.send(`Aucun meme spécifié, ${message.author}!`);
         }
         voiceChannel.join().then(connection => {
-            var filePath = '/home/discordmemesSf/public/upload/mp3/' + args[0] + '.mp3';
+            var filePath = '/home/discordmemesSf/public/uploads/mp3/' + args[0] + '.mp3';
             if (!fs.existsSync(filePath)) {
                 return message.channel.send(`Le fichier, ${filePath} n'existe pas`);
             }
