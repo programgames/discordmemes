@@ -36,7 +36,6 @@ client.on('message', message => {
         else {
             var response = "Joueur inconnu ... Liste des joueurs connus : ";
             joueurs.forEach(function (item, index, array) {
-                console.log(item);
                 response = response.concat(' ', item);
             });
             return message.channel.send(response);
@@ -59,6 +58,19 @@ client.on('message', message => {
             });
         }).catch(err => console.log(err));
     }
+    else if (command === 'listmeme') {
+        fs.readdir('./memes/', function (err, files) {
+            if (err) {
+                return message.channel.send('Unable to scan directory: ' + err);
+            }
+            var filesNames = '';
+            files.forEach(function (file) {
+                filesNames += file + ' , ';
+            });
+            return message.channel.send(filesNames);
+        });
+    }
+
 });
 
 client.login(config.token);
