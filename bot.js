@@ -78,9 +78,11 @@ client.on('message', message => {
             if (err) {
                 return message.channel.send('Unable to scan directory: ' + err);
             }
+            var filesNames = '';
             files.forEach(function (file) {
-                message.channel.send(file);
+                filesNames += file + ' \n ';
             });
+            return message.channel.send(filesNames);
         });
     }
 
