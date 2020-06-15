@@ -20,11 +20,26 @@ client.on('message', message => {
     } while (command.length == 0);
 
     var joueurs = ['ixion', 'julien', 'tatas'];
-    if (command === 'player') {
+    if (command === 'player' || command === 'p') {
+
+        var voiceChannel = message.member.voice.channel;
+
         if (!args.length) {
             return message.channel.send(`Aucun joueur spécifié, ${message.author}!`);
         }
         else if (args[0] === 'ixion') {
+            voiceChannel.join().then(connection => {
+
+                var filePath = '/home/discordmemesSf/public/uploads/mp3/' + args[0] + '.mp3';
+                if (!fs.existsSync(filePath)) {
+                    return message.channel.send(`Le fichier, ${filePath} n'existe pas`);
+                }
+                const dispatcher = connection.play(filePath);
+                dispatcher.on("end", end => {
+                    voiceChannel.leave()
+                });
+            }).catch(err => console.log(err));
+
             return message.channel.send('UN PUTAIN D\'IRON 4');
         }
         else if (args[0] === 'julien') {
@@ -41,7 +56,7 @@ client.on('message', message => {
             return message.channel.send(response);
         }
     }
-    else if (command === 'meme') {
+    else if (command === 'meme' || command === 'm') {
 
         var voiceChannel = message.member.voice.channel;
         if (!args.length) {
@@ -58,16 +73,14 @@ client.on('message', message => {
             });
         }).catch(err => console.log(err));
     }
-    else if (command === 'listmeme') {
+    else if (command === 'listmeme' || command === 'l') {
         fs.readdir('/home/discordmemesSf/public/uploads/mp3/', function (err, files) {
             if (err) {
                 return message.channel.send('Unable to scan directory: ' + err);
             }
-            var filesNames = '';
             files.forEach(function (file) {
-                filesNames += file + ' , ';
+                message.channel.send(file);
             });
-            return message.channel.send(filesNames);
         });
     }
 
