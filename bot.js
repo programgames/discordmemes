@@ -7,6 +7,10 @@ client.once('ready', () => {
     console.log('Ready!');
 });
 
+var isWin = process.platform === "win32";
+
+var path = './mp3/';
+
 client.on('message', message => {
 
     var prefix = config.prefix;
@@ -30,7 +34,7 @@ client.on('message', message => {
         else if (args[0] === 'ixion') {
             voiceChannel.join().then(connection => {
 
-                var filePath = '/home/discordmemesSf/public/uploads/mp3/' + args[0] + '.mp3';
+                var filePath = path + args[0] + '.mp3';
                 if (!fs.existsSync(filePath)) {
                     return message.channel.send(`Le fichier, ${filePath} n'existe pas`);
                 }
@@ -63,7 +67,7 @@ client.on('message', message => {
             return message.channel.send(`Aucun meme spécifié, ${message.author}!`);
         }
         voiceChannel.join().then(connection => {
-            var filePath = '/home/discordmemesSf/public/uploads/mp3/' + args[0] + '.mp3';
+            var filePath = path + args[0] + '.mp3';
             if (!fs.existsSync(filePath)) {
                 return message.channel.send(`Le fichier, ${filePath} n'existe pas`);
             }
@@ -74,7 +78,7 @@ client.on('message', message => {
         }).catch(err => console.log(err));
     }
     else if (command === 'listmeme' || command === 'l') {
-        fs.readdir('/home/discordmemesSf/public/uploads/mp3/', function (err, files) {
+        fs.readdir(path, function (err, files) {
             if (err) {
                 return message.channel.send('Unable to scan directory: ' + err);
             }
@@ -84,6 +88,9 @@ client.on('message', message => {
             });
             return message.channel.send(filesNames);
         });
+    }
+    else {
+        return message.channel.send('Commande inconnu');
     }
 
 });
